@@ -12,7 +12,10 @@ CREATE TABLE `users` (
     `sent_ts` timestamp NULL DEFAULT NULL COMMENT 'Last notification was sent at',
     `sent_num` int NOT NULL DEFAULT 0 COMMENT 'Number of notifications was sent',
     `locked_ts` timestamp NULL DEFAULT NULL COMMENT 'User locked by processor at',
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `username` (`username`),
+    KEY `valid_ts` (`valid_ts`),
+    KEY `checked` (`checked`,`valid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DELIMITER $$
